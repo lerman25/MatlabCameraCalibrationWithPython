@@ -11,14 +11,14 @@ from datetime import datetime
 def calibrate_camera_from_folder(img_folder,board_size,square_size,radial_coef = 2,max_images_use = 1000,meta_dir = None,ret_engine = False):
     """
     Create camera calibration parameteres from images in images folder.
- 
+
     Parameters
     ----------
     img_folder : str
         Path to the images folder
     board_size : tupple (int,int)
         Board size
- 
+
     Returns
     -------
     TBD
@@ -67,13 +67,13 @@ def calibrate_camera_from_folder(img_folder,board_size,square_size,radial_coef =
         eng.workspace['final_calibration'] = camera_calibration
         eng.save(meta_dir+'final_calibration.mat', 'final_calibration',nargout = 0)
         cv2.imwrite(meta_dir+'camera_kmeans_selection.png',kmeans_plot)
-        final_imgs_txt_file = meta_dir+'selected images for final calibration list'
+        final_imgs_txt_file = meta_dir+'selected images for final calibration list.txt'
         with open(final_imgs_txt_file,'w') as f:
             for img in final_imgs:
                 f.write(img+'\n')
-        reprojection_error_txt_file = meta_dir+'calibration reprojection error'
+        reprojection_error_txt_file = meta_dir+'calibration reprojection error.txt'
         with open(reprojection_error_txt_file,'w') as f:
-            f.write(np.round(final_rep_error,3))
+            f.write(np.round(final_rep_error,3).astype('str'))
 
     if ret_engine:
         return camera_calibration,eng
