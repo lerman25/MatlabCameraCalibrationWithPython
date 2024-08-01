@@ -11,7 +11,7 @@ Will calibrate Cam1&Cam3, Cam2&Cam3 and will try to calibrate Cam1&Cam2 if possi
 If a single stereo calibration is requied use XXX file.
 
 Pipeline:
-1. Split videos of physical checkerboard calibration  into frames (The videos should be synced).
+1. Split videos of physical checkerboard calibration  into frames (The videos must be synced - starting and ending in the same "real" time).
 2. Detect in which frames the checkerboard is visible.
 3. Calibrate each camera individually from valid frames to create camera parameteres.
 4. Detect in which frames the checkerboard is visible in both cameras.
