@@ -1,5 +1,5 @@
-# MatlabStereoCalibrationWithPython
-Using Matlab's Python engine for stereo calibration (For those who are unfamiliar with Matlab but prefers it over OpenCV), using checkerboard.
+# MatlabCameraCalibrationWithPython
+Using Matlab's Python engine for stereo/camera calibration (For those who are unfamiliar with Matlab but prefers it over OpenCV), using checkerboard.
 Can be used for videos or images.
 
 Originally made for 3 video cameras in a triangle setting: 
@@ -10,7 +10,7 @@ Will calibrate Cam1&Cam3, Cam2&Cam3 and will try to calibrate Cam1&Cam2 if possi
 
 If a single stereo calibration is requied use XXX file.
 
-Pipeline:
+Pipeline for stereo:
 1. Split videos of physical checkerboard calibration  into frames (The videos must be synced - starting and ending in the same "real" time).
 2. Detect in which frames the checkerboard is visible, factoring in reprojection error and coverage of FOV.
 3. Calibrate each camera individually from valid frames to create camera parameteres.
