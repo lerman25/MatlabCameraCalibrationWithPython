@@ -1,6 +1,10 @@
 # MatlabCameraCalibrationWithPython
-Using Matlab's Python engine for stereo/camera calibration (For those who are unfamiliar with Matlab but prefers it over OpenCV), using checkerboard.
+Using Matlab's Python engine for stereo/camera calibration (For those who are unfamiliar with Matlab but prefers it over OpenCV), using chessboard.
 Can be used for videos or images.
+
+OpenCV is used in this project for:
+1. Chessboard detection (checkChessboard())
+2. Split video to frames if needed
 
 Originally made for 3 video cameras in a triangle setting: 
 
@@ -12,8 +16,8 @@ If a single stereo calibration is requied use XXX file.
 
 Pipeline for stereo:
 1. Split videos of physical checkerboard calibration  into frames (The videos must be synced - starting and ending in the same "real" time).
-2. Detect in which frames the checkerboard is visible, factoring in reprojection error and coverage of FOV.
+2. Detect in which frames the chessboard is visible, factoring in reprojection error and coverage of FOV.
 3. Calibrate each camera individually from valid frames to create camera parameteres.
-4. Detect in which frames the checkerboard is visible in both cameras, factoring in the reprojection error and coverage of FOV.
+4. Detect in which frames the chessboard is visible in both cameras, factoring in the reprojection error and coverage of FOV.
 5. Stereo calibrate each pair of cameras  using camera parameters.
 6. Convert to OpenCV format if required.
