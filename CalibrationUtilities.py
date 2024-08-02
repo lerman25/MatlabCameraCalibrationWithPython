@@ -108,7 +108,7 @@ def get_image_reprojection_error(img_reprojection_errors):
         point_error = (point[0]**2+point[1]**2)**0.5
         errors_sum+=point_error
     return errors_sum/len(img_reprojection_errors)
-def kmeans_imgs_selection_Matlab(corners_list,k = 10,errors = None,count = 3,error_threshold = 1.5,recursive_error_fix =False):
+def kmeans_imgs_selection_Matlab(corners_list,k = 10,errors = None,count = 3,error_threshold = 1.5,recursive_error_fix =False,background_img = None):
     """
     $$ function code needs organzing
     This function tries to find the best FOV coverage from calibration images using k-means algorithm
@@ -142,6 +142,8 @@ def kmeans_imgs_selection_Matlab(corners_list,k = 10,errors = None,count = 3,err
         aspect="auto",
         origin="lower",
     )
+    if background_img is not None:
+        plt.imshow(background_img)
 
     plt.plot(corners_first_cord[:, 0], corners_first_cord[:, 1], "k.", markersize=2)
     # Plot the centroids as a white X
