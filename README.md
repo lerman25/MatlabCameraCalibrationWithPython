@@ -14,12 +14,13 @@ Originally made for 3 video cameras in a triangle setting:
 
 Will calibrate Cam1&Cam3, Cam2&Cam3 and will try to calibrate Cam1&Cam2 if possible.
 
-Process explanation: 
-When calibrating from videos frames, one might encouter 3 problems:
+## Process explanation: 
+
+### When calibrating from videos frames, one might encouter 3 problems:
   1. Many frames *without* a chessboard visible
   2. Many frames *with* chessboard visible
   3. Too many frames to manually select the best ones, accounting for both FOV coverage and reprojection error
-Solutions: 
+### Solutions: 
   1) Matlab chessboard detection is slower then OpenCV's, and OpenCV's is just as good.
      For that reason, the code iterates over each frame/images and checks if a chessboard is visible in that image.
   2) When too many frames/images contains a chessboard visible, the code random samples an appropiate amount of images to use.
@@ -30,10 +31,7 @@ Solutions:
      From each mean it select the ones with the lowest reprojection error (thus accounting for reprojection error).
      
 
-
-If a single stereo calibration is requied use XXX file.
-
-Pipeline for stereo:
+## Pipeline for stereo:
 1. Split videos of physical checkerboard calibration  into frames (The videos must be synced - starting and ending in the same "real" time).
 2. Detect in which frames the chessboard is visible, factoring in reprojection error and coverage of FOV.
 3. Calibrate each camera individually from valid frames to create camera parameteres.
