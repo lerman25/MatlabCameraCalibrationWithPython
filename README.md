@@ -1,7 +1,7 @@
 # MatlabCameraCalibrationWithPython
 %%% The project is still in works (the entire code is written, but not yet organized) 
 
-Using [Matlab's Python engine]([[url](https://www.mathworks.com/help/matlab/matlab-engine-for-python.html))]) for stereo/camera calibration (For those who are unfamiliar with Matlab but prefers it over OpenCV), using chessboard.
+Using [Matlab's Python engine](https://www.mathworks.com/help/matlab/matlab-engine-for-python.html) for stereo/camera calibration (For those who are unfamiliar with Matlab but prefers its camera calibration algorithm over OpenCV's), using chessboard.
 Can be used for videos or images.
 
 OpenCV is used in this project for:
