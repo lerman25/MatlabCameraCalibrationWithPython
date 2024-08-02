@@ -27,8 +27,8 @@ Will calibrate Cam1&Cam3, Cam2&Cam3 and will try to calibrate Cam1&Cam2 if possi
   3) To select automaticly from a large set of images, does an initial camera calibration of the entire set (a slow process, but helps for a better result).
      The initial calibration gives reprojection errors for the large set of images.
      To select the best ones accouting for both FOV coverage and reprojection error, the code uses K-means algorithm
-     To detect from which sub-set of images, that would be each mean given to image (thus accounting for FOV).
-     From each mean it select the ones with the lowest reprojection error (thus accounting for reprojection error).
+     to create sub-sets of images based on their chessboard location, that would be each mean given to image (thus accounting for FOV).
+     From each mean it selects the images with the lowest reprojection error (thus accounting for reprojection error).
      
 
 ## Pipeline for stereo:
