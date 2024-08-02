@@ -18,7 +18,7 @@ Process explanation:
 When calibrating from videos frames, one might encouter 3 problems:
   1. Many frames *without* a chessboard visible
   2. Many frames *with* chessboard visible
-  3. Too many frames to manually select the best ones, accouting for both FOV coverage and reprojection error
+  3. Too many frames to manually select the best ones, accounting for both FOV coverage and reprojection error
 Solutions: 
   1) Matlab chessboard detection is slower then OpenCV's, and OpenCV's is just as good.
      For that reason, the code iterates over each frame/images and checks if a chessboard is visible in that image.
