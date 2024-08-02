@@ -8,6 +8,8 @@ from sklearn.cluster import KMeans
 import os
 
 def checkIsVideo(file_path):
+    if os.path.isdir(file_path):
+        return False
     cap = cv2.VideoCapture(file_path)
     hasFrame, x = cap.read()
     return hasFrame
@@ -218,4 +220,6 @@ def calibrate_from_points(eng,imagePoints,worldPoints,mrows,ncols,radial_coef = 
         'InitialIntrinsicMatrix', matlab.double(vector=[]  ), 'InitialRadialDistortion', matlab.double(vector=[]  ),
         'ImageSize', matlab.double(vector=[mrows,ncols]  ),nargout = 3)
         return (cameraParams3coeff, imagesUsed, estimationErrors)
-#
+def camera_parameters_to_opencv(eng,camera_parameters):
+    intrinsicMatrix,distortionCoefficients= eng.cameraIntrinsicsToOpenCV(camera_parameters,nargout = 2)
+    return np.array(intrinsicMatrix),np.array(distortionCoefficients)

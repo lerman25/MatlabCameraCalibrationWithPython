@@ -107,7 +107,15 @@ if __name__ == "__main__":
         img_folder = INPUT
     else:
         raise ValueError('INPUT is not a directory or not a comptable video file')
-    ret_val = calibrate_camera_from_folder(img_folder,board_size=CHESSBOARD_SIZE,square_size=SQUARE_SIZE,meta_dir=META_DATA_DIR)
+    
+    cameraParams,eng = calibrate_camera_from_folder(img_folder,board_size=CHESSBOARD_SIZE,square_size=SQUARE_SIZE,meta_dir=META_DATA_DIR,ret_engine=True)
+    intrinsicMatrix,distortionCoefficients = camera_parameters_to_opencv(eng,cameraParams['final_calibration'][0])
+    print(intrinsicMatrix,distortionCoefficients)
+    intrinsicMatrix_txt_file = OUTPUT_DIR + 'intrinsicMatrix.txt'
+    distortionCoefficients_txt_file = OUTPUT_DIR + 'distortionCoefficients.txt'
+    np.savetxt(intrinsicMatrix_txt_file,intrinsicMatrix)
+    np.savetxt(distortionCoefficients_txt_file,distortionCoefficients)
+    
     if checkIsVideo(INPUT):
         os.rmdir(FRAMES_DIR)
     
