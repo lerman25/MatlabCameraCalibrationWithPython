@@ -30,7 +30,13 @@ Will calibrate Cam1&Cam3, Cam2&Cam3 and will try to calibrate Cam1&Cam2 if possi
      to create sub-sets of images based on their chessboard location, that would be each mean given to image (thus accounting for FOV).
      From each mean it selects the images with the lowest reprojection error (thus accounting for reprojection error).
      
-
+## Pipeline for single camera:
+1. Split video of physical checkerboard calibration  into frames.
+2. Detect in which frames the chessboard is visible, factoring in reprojection error and coverage of FOV.
+3. Calibrate the camera from valid frames to create initial camera parameteres.
+4. Select the best frames accounting for FOV and reprojection error (as described in [Process explanation](##-Process-explanation)).
+5. Re-calibrate using the best frames.
+6. Convert to OpenCV format if required.
 ## Pipeline for stereo:
 1. Split videos of physical checkerboard calibration  into frames (The videos must be synced - starting and ending in the same "real" time).
 2. Detect in which frames the chessboard is visible, factoring in reprojection error and coverage of FOV.
