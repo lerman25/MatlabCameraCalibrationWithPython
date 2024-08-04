@@ -22,7 +22,7 @@ Will calibrate Cam1&Cam3, Cam2&Cam3 and will try to calibrate Cam1&Cam2 if possi
   3. Too many frames to manually select the best ones, accounting for both FOV (field of view) coverage and reprojection error
 ### Solutions: 
   1) Matlab chessboard detection is slower then OpenCV's, and OpenCV's is just as good.
-     For that reason, the code iterates over each frame/images and checks if a chessboard is visible in that image.
+     For that reason, the code iterates over each frame/images and uses OpenCV's chessboard detection to check if a chessboard is visible in that image.
   2) When too many frames/images contains a chessboard visible, the code random samples an appropiate amount of images to use.
   3) To select automaticly from a large set of images, does an initial camera calibration of the entire set (a slow process, but helps for a better result).
      The initial calibration gives reprojection errors for the large set of images.
